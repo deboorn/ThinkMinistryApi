@@ -42,7 +42,7 @@ var_dump($mp->getEndpoints());
 
 
 /*
- * How to get user information (alternative)
+ * How to get user information
  */
 $r = $mp->GetUserInfo(array('UserID' => '196'));
 var_dump($r);

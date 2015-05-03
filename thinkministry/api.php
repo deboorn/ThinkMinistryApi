@@ -92,10 +92,6 @@ class API
      * @var
      */
     protected $soap;
-    /**
-     * @var
-     */
-    protected $userId;
 
     /**
      * @var bool
@@ -146,53 +142,11 @@ class API
     }
 
     /**
-     * @param $userId
-     * @return $this
-     */
-    public function setUser($userId)
-    {
-        $this->userId = $userId;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getEndpoints()
     {
         return $this->soap->__getFunctions();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPaymentTypes()
-    {
-        $r = $this->ExecuteStoredProcedure(array(
-            'StoredProcedureName' => 'api_OGCC_GetProgramsAndPaymentTypes',
-            'RequestString'       => http_build_query(array()),
-        ));
-        return $r->NewDataSet->Table1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreditCardPaymentTypeId()
-    {
-        foreach ($this->getPaymentTypes() as $row) {
-            if ($row->Payment_Type == "Credit Card") return $row->Payment_Type_ID;
-        }
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAchPaymentTypeId()
-    {
-        foreach ($this->getPaymentTypes() as $row) {
-            if ($row->Payment_Type == "ACH/EFT") return $row->Payment_Type_ID;
-        }
     }
 
     /**
