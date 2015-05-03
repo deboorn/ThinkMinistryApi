@@ -74,7 +74,7 @@ var_dump($r);
 /*
  * How to Execute Stored Procedure
  */
-$r = $this->ExecuteStoredProcedure(array(
+$r = $mp->ExecuteStoredProcedure(array(
     'StoredProcedureName' => 'api_Name_Of_Procedure',
     'RequestString'       => http_build_query(array(
         // optional criteria
